@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,13 +18,16 @@ public class HelloWorldApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloWorldApplication.class);
+        SpringApplication.run(HelloWorldApplication.class, args);
     }
 
-
-    @RequestMapping("/")
-    String helloWorld() {
+    @GetMapping("/")
+    public String helloWorld() {
         return "5. please visit my website learning-ocean.com";
     }
 
+    @GetMapping("/health")
+    public String health() {
+        return "Spring Boot application is running in Tomcat!";
+    }
 }
